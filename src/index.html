@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="icon"
+      href="../src/assets/weather-icon.svg"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="../src/assets/weather-icon.svg" />
+        <div>Weather</div>
+      </div>
+
+      <form action="search">
+        <div class="input-wrapper">
+          <img
+            src="../src/assets/maginify-icon.svg"
+            class="search-icon"
+            alt="search-icon"
+          />
+          <input
+            type="text"
+            name="search"
+            id="search"
+            placeholder="Search Location..."
+          />
+        </div>
+        <button type="submit" class="search-button" id="search-button">
+          Search
+        </button>
+      </form>
+    </header>
+
+    <main>
+      <button class="change-metrics" id="change-metrics">C/F</button>
+      <section class="weather-cards-wrapper">
+        <h3 class="title">
+          <img src="../src/assets/city-variant-outline.svg" />
+          <span>Athens, GR</span>
+        </h3>
+
+        <div>
+          <div class="current-weather-card">
+            <div class="grid-item1">
+              <div class="current-weather-wrapper">
+                <h3>Current Weahter</h3>
+                <span id="last-update">10:52 am</span>
+              </div>
+              <img
+                src="../src/assets/reload.svg"
+                alt="reload-icon"
+                class="icon"
+              />
+            </div>
+
+            <div class="grid-item2">
+              <div class="temp-icon-wrapper">
+                <img
+                  src="https://cdn.weatherapi.com/weather/64x64/day/113.png"
+                  alt="weather-icon"
+                  class="icon"
+                />
+                <div>
+                  <h1>22.59</h1>
+                  <h1>°C</h1>
+                </div>
+              </div>
+              <div>
+                <div>Min temp: <span id="min-temp">20.78</span>°C,</div>
+                <div>Max. temp: <span id="max-temp">25.78</span>°C</div>
+              </div>
+            </div>
+
+            <div class="grid-item3">
+              <h4 id="sky-visibility">Clear</h4>
+              <div id="feels-like">Feels like: 24.95°C</div>
+            </div>
+
+            <div class="grid-item4">
+              <div>
+                <h4>Wind</h4>
+                <div>
+                  <img
+                    src="../src/assets/north-east.svg"
+                    alt="wind-direction"
+                    id="wind-direction"
+                  />
+                  <p>100 m/s</p>
+                </div>
+              </div>
+              <div>
+                <h4>Chance of rain</h4>
+                <p>3%</p>
+              </div>
+              <div>
+                <h4>Humidity</h4>
+                <p>48%</p>
+              </div>
+              <div>
+                <h4>Visibility</h4>
+                <p>10km</p>
+              </div>
+              <div>
+                <h4>Pressure</h4>
+                <p>1016 mb</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="forecast-container">
+          <div class="grid-item5">
+            <div>
+              <p>Hourly</p>
+              <p>Daily</p>
+            </div>
+            <p>Forecast</p>
+          </div>
+          <div class="grid-item6">
+            <div>
+              <p>Sun</p>
+              <div class="forecast">
+                <div>
+                  <img
+                    src="https://cdn.weatherapi.com/weather/64x64/day/113.png"
+                    alt=""
+                    class="icon"
+                  />
+                  <p>25°C</p>
+                </div>
+                <div>
+                  <img src="../src/assets/chance-of-rain.svg" alt="" />
+                  <p>0%</p>
+                </div>
+                <div>
+                  <img src="../src/assets/wind.svg" alt="" />
+                  <p>0%</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p>Sun</p>
+              <div class="forecast">
+                <div>
+                  <img
+                    src="https://cdn.weatherapi.com/weather/64x64/day/113.png"
+                    alt=""
+                    class="icon"
+                  />
+                  <p>25°C</p>
+                </div>
+                <div>
+                  <img src="../src/assets/chance-of-rain.svg" alt="" />
+                  <p>0%</p>
+                </div>
+                <div>
+                  <img src="../src/assets/wind.svg" alt="" />
+                  <p>0%</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p>Sun</p>
+              <div class="forecast">
+                <div>
+                  <img
+                    src="https://cdn.weatherapi.com/weather/64x64/day/113.png"
+                    alt=""
+                    class="icon"
+                  />
+                  <p>25°C</p>
+                </div>
+                <div>
+                  <img src="../src/assets/chance-of-rain.svg" alt="" />
+                  <p>0%</p>
+                </div>
+                <div>
+                  <img src="../src/assets/wind.svg" alt="" />
+                  <p>0%</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p>Sun</p>
+              <div class="forecast">
+                <div>
+                  <img
+                    src="https://cdn.weatherapi.com/weather/64x64/day/113.png"
+                    alt=""
+                    class="icon"
+                  />
+                  <p>25°C</p>
+                </div>
+                <div>
+                  <img src="../src/assets/chance-of-rain.svg" alt="" />
+                  <p>0%</p>
+                </div>
+                <div>
+                  <img src="../src/assets/wind.svg" alt="" />
+                  <p>0%</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p>Sun</p>
+              <div class="forecast">
+                <div>
+                  <img
+                    src="https://cdn.weatherapi.com/weather/64x64/day/113.png"
+                    alt=""
+                    class="icon"
+                  />
+                  <p>25°C</p>
+                </div>
+                <div>
+                  <img src="../src/assets/chance-of-rain.svg" alt="" />
+                  <p>0%</p>
+                </div>
+                <div>
+                  <img src="../src/assets/wind.svg" alt="" />
+                  <p>0%</p>
+                </div>
+              </div>
+            </div>
+          </div>
+      </section>
+    </main>
+
+    <footer>Powered by Weather API</footer>
+  </body>
+</html>

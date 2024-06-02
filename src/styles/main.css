@@ -1,0 +1,222 @@
+.icon {
+  width: 25px;
+}
+
+/*Styling Grid*/
+.weather-cards-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--weather-card-font-color);
+}
+.current-weather-card {
+  width: var(--weather-card-width);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
+}
+
+.grid-item1 {
+  grid-column: span 2;
+}
+
+.grid-item4 {
+  grid-column: span 2;
+}
+
+/*Styling weather cards*/
+.title {
+  font-size: 1.7rem;
+  font-weight: 500;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+}
+
+.title > img {
+  width: 30px;
+}
+
+.weather-cards-wrapper > div:first-of-type {
+  background: #0d47a1 none center center no-repeat fixed;
+  background-image: url(https://images.unsplash.com/photo-1601297183305-6df142704ea2?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&quot);
+  background-size: cover;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.current-weather-card {
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.288);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+.grid-item1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: var(--weather-card-padding);
+}
+.grid-item1 img {
+  cursor: pointer;
+}
+
+.temp-icon-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.grid-item2 > div:nth-child(2) {
+  padding-left: var(--weather-card-padding);
+  line-height: var(--line-height);
+}
+
+.temp-icon-wrapper h1 {
+  font-size: 48px;
+  display: inline-block;
+}
+
+.grid-item2 img {
+  width: 80px;
+}
+
+.grid-item3 {
+  padding-top: var(--weather-card-padding);
+  padding-left: var(--weather-card-padding);
+  line-height: var(--line-height);
+}
+
+.grid-item4 {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.grid-item4 {
+  text-align: center;
+}
+
+.grid-item4 > div {
+  line-height: var(--line-height);
+}
+
+.grid-item4 > div:first-of-type > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-item4 img {
+  width: 1rem;
+}
+
+/*Forecast container*/
+
+.forecast-container {
+  width: var(--weather-card-width);
+  background-color: rgba(0, 0, 0, 0.288);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
+  padding: var(--weather-card-padding);
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+/*Styling Forecast*/
+.grid-item5 {
+  grid-column: span 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.grid-item5 > div {
+  /*border-bottom: 2px solid var(--weather-card-font-color);*/
+  display: flex;
+  gap: 0.5rem;
+}
+
+.grid-item6 {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  text-align: center;
+}
+
+.grid-item6 > div {
+  border-top: var(--weaher-card-border);
+}
+.grid-item6 > div > p {
+  padding: var(--gap);
+}
+
+.forecast {
+  padding: 1.15rem;
+  border-top: var(--weaher-card-border);
+}
+
+.forecast > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.forecast {
+  border-right: var(--weaher-card-border);
+}
+
+.forecast > div:not(:first-child) {
+  gap: 8px;
+}
+
+.forecast > div:first-of-type > img {
+  width: 35px;
+}
+
+@media (max-width: 600px) {
+  .current-weather-card {
+    width: 300px;
+    grid-template-columns: 1fr;
+  }
+
+  .grid-item3 {
+    grid-column-start: 1;
+  }
+
+  .grid-item4 {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+    padding-left: var(--weather-card-padding);
+  }
+  .grid-item4 > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .forecast-container {
+    width: 300px;
+    grid-template-columns: 1fr;
+  }
+
+  .grid-item6 {
+    grid-template-columns: 1fr;
+    gap: var(--gap);
+  }
+
+  .grid-item6 > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: var(--weaher-card-border);
+  }
+  .forecast {
+    display: flex;
+    gap: var(--gap);
+    align-items: center;
+    border: none;
+    padding: 0;
+  }
+}

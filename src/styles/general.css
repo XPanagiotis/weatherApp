@@ -1,0 +1,55 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+body {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --dark-grey: #333333;
+  --medium-grey: #636363;
+  --light-grey: #eeeeee;
+  --ash: #f4f4f4;
+  --primary-color: #1e5ad3;
+  --white: white;
+  --border: 1px solid var(--light-grey);
+  --shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  --weather-card-width: 600px;
+  --weather-card-font-color: #dee2e6;
+  --weather-card-padding: 1rem;
+  --weaher-card-border: 3px solid rgba(0, 0, 0, 0.432);
+  --line-height: 1.4rem;
+  --gap: 0.5rem;
+}
+main {
+  position: relative;
+  background-color: var(--primary-color);
+  height: 300vh;
+}
+button {
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  font-weight: 700;
+  border-radius: 1rem;
+}
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+ul,
+fieldset,
+li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
