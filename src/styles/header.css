@@ -6,6 +6,12 @@ header {
   justify-content: center;
   gap: 9rem;
   padding: 1.2rem 3rem;
+  height: var(--header-height);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
 }
 
 .logo {

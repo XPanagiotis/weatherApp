@@ -1,0 +1,16 @@
+export const changeMetricsAnimation = function () {
+  const unitC = document.querySelector(".unit-c");
+  const unitF = document.querySelector(".unit-f");
+
+  if (unitC.classList.contains("selected")) {
+    unitC.classList.remove("selected");
+    unitC.classList.add("deselected");
+    unitF.classList.remove("deselected");
+    unitF.classList.add("selected");
+  } else {
+    unitC.classList.remove("deselected");
+    unitC.classList.add("selected");
+    unitF.classList.remove("selected");
+    unitF.classList.add("deselected");
+  }
+};

@@ -2,13 +2,56 @@
   width: 25px;
 }
 
+.toggle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 15px;
+  right: 25px;
+}
+
+.toggle-button {
+  width: 160px;
+  height: 50px;
+  border: none;
+  border-radius: 30px;
+  background-color: rgba(0, 0, 0, 0.288);
+  color: var(--white);
+  cursor: pointer;
+  position: relative;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  padding: 0 20px;
+}
+
+.unit {
+  transition: all 0.5s ease-in-out;
+  display: inline-block;
+  opacity: 0.5;
+  transform: scale(0.8) rotate(0deg);
+}
+
+.unit.selected {
+  transform: scale(1.2) rotate(360deg);
+  opacity: 1;
+  font-size: 18px;
+}
+
+.unit.deselected {
+  transform: scale(0.8) rotate(0deg);
+  opacity: 0.5;
+}
+
 /*Styling Grid*/
 .weather-cards-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  color: var(--weather-card-font-color);
+  color: var(--white);
 }
 .current-weather-card {
   width: var(--weather-card-width);
@@ -40,7 +83,7 @@
 }
 
 .weather-cards-wrapper > div:first-of-type {
-  background: #0d47a1 none center center no-repeat fixed;
+  background: var(--primary-color) none center center no-repeat fixed;
   background-image: url(https://images.unsplash.com/photo-1601297183305-6df142704ea2?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&quot);
   background-size: cover;
   border-top-left-radius: 15px;
@@ -155,6 +198,7 @@
 .forecast {
   padding: 1.15rem;
   border-top: var(--weaher-card-border);
+  border-bottom: var(--weaher-card-border);
 }
 
 .forecast > div {
@@ -167,6 +211,10 @@
   border-right: var(--weaher-card-border);
 }
 
+.grid-item6 > div:last-child > div {
+  border-right: none;
+}
+
 .forecast > div:not(:first-child) {
   gap: 8px;
 }
@@ -175,7 +223,33 @@
   width: 35px;
 }
 
+footer {
+  height: 40px;
+  background-color: var(--white);
+}
+
 @media (max-width: 600px) {
+  main {
+    height: auto;
+    padding-top: 40px;
+    padding-bottom: 70px;
+  }
+
+  .toggle-container {
+    top: auto;
+    bottom: 10px;
+    right: 40px;
+  }
+
+  .toggle-button {
+    width: 110px;
+    height: 50px;
+  }
+
+  .unit.selected {
+    font-size: 1rem;
+  }
+
   .current-weather-card {
     width: 300px;
     grid-template-columns: 1fr;

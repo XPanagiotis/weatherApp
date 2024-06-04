@@ -4,5 +4,5 @@ export const fetchData = async function fetchData(location) {
     { mode: "cors" }
   );
   let data = await response.json();
-  console.log(data);
+  return data;
 };
