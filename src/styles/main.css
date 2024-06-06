@@ -290,7 +290,9 @@ footer {
     display: flex;
     gap: var(--gap);
     align-items: center;
+    justify-content: center;
     border: none;
     padding: 0;
+    flex-wrap: wrap;
   }
 }

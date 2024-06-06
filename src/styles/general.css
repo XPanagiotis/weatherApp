@@ -21,7 +21,7 @@ body {
   --border: 1px solid var(--light-grey);
   --header-height: 95px;
   --footer-height: 40px;
-  --weather-card-width: 600px;
+  --weather-card-width: 680px;
   --weather-card-font-color: #dee2e6;
   --weather-card-padding: 1rem;
   --weaher-card-border: 2px solid rgba(0, 0, 0, 0.432);

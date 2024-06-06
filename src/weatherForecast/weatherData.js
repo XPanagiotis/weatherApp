@@ -1,5 +1,4 @@
 "use strict";
-
 export default function weatherData(data) {
   //get the day name of the date
   function findDay(date) {
@@ -65,19 +64,24 @@ export default function weatherData(data) {
   const currentWeather = {
     cloud: data.current.cloud,
     humidity: data.current.humidity,
-    mindDir: data.current.wind_dir.slice(-2),
+    windDir: data.current.wind_dir.slice(-2),
     text: data.current.condition.text,
     icon: data.current.condition.icon,
     chanceOfRain: data.forecast.forecastday[0].day.daily_chance_of_rain,
+    pressure: data.current.pressure_mb,
     celciusKmhData: {
       feelsLike: data.current.feelslike_c,
       temprature: data.current.temp_c,
+      minTemprature: data.forecast.forecastday[0].day.mintemp_c,
+      maxTemprature: data.forecast.forecastday[0].day.maxtemp_c,
       visibility: data.current.vis_km,
       wind: data.current.wind_kph,
     },
     fahrenheitMphData: {
       feelsLike: data.current.feelslike_f,
       temprature: data.current.temp_f,
+      minTemprature: data.forecast.forecastday[0].day.mintemp_f,
+      maxTemprature: data.forecast.forecastday[0].day.maxtemp_f,
       visibility: data.current.vis_miles,
       wind: data.current.wind_mph,
     },
