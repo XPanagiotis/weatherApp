@@ -75,6 +75,7 @@
   display: flex;
   align-items: baseline;
   justify-content: center;
+  text-align: center;
   gap: 10px;
 }
 
@@ -178,7 +179,31 @@
 .grid-item5 > div {
   /*border-bottom: 2px solid var(--weather-card-font-color);*/
   display: flex;
-  gap: 0.5rem;
+  gap: 0.7rem;
+}
+
+#hourly-forecast,
+#daily-forecast {
+  cursor: pointer;
+  position: relative;
+}
+
+#hourly-forecast::after,
+#daily-forecast::after {
+  content: "";
+  width: 100%;
+  background-color: #fff;
+  height: 2px;
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  transition: transform 200ms ease-in-out;
+  transform: scaleX(0);
+}
+
+#hourly-forecast.selected::after,
+#daily-forecast.selected::after {
+  transform: scaleX(1);
 }
 
 .grid-item6 {
@@ -224,8 +249,12 @@
 }
 
 footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 40px;
-  background-color: var(--white);
+  color: var(--dark-grey);
+  background-color: var(--light-grey);
 }
 
 @media (max-width: 600px) {
@@ -294,5 +323,108 @@ footer {
     border: none;
     padding: 0;
     flex-wrap: wrap;
+  }
+}
+
+/*Loading Page Animation*/
+.loading-card {
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  padding: 100px;
+  background-color: var(--primary-color);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.cloud {
+  position: relative;
+  width: 80px;
+  height: 50px;
+  background: #e0e0e0;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  animation: float 2s ease-in-out infinite;
+}
+
+.cloud::before,
+.cloud::after {
+  content: "";
+  position: absolute;
+  background: #e0e0e0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.cloud::before {
+  top: -30px;
+  left: 10px;
+}
+
+.cloud::after {
+  top: -20px;
+  right: 10px;
+}
+
+.rain {
+  position: absolute;
+  bottom: -10px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.drop {
+  width: 2px;
+  height: 10px;
+  background: var(--white);
+  animation: drop 0.6s linear infinite;
+}
+
+.drop:nth-child(1) {
+  animation-delay: 0s;
+}
+.drop:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.drop:nth-child(3) {
+  animation-delay: 0.4s;
+}
+.drop:nth-child(4) {
+  animation-delay: 0.6s;
+}
+.drop:nth-child(5) {
+  animation-delay: 0.8s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes drop {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(20px);
+    opacity: 0;
   }
 }

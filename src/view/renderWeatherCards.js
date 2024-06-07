@@ -38,7 +38,7 @@ export const renderWeatherCard = function () {
     createDOMElement("span", "", "", "last-update")
   );
   gridItem1.appendChild(currentWeatherWrapper);
-  gridItem1.appendChild(createImage(reloadIcon, "icon"));
+  gridItem1.appendChild(createImage(reloadIcon, "icon", "reload-icon"));
 
   //grid item 2
   const gridItem2 = createDOMElement("div", "grid-item2");
@@ -131,7 +131,7 @@ export const renderWeatherCard = function () {
   );
 
   gridItem5.appendChild(forecastType);
-  gridItem5.appendChild(createDOMElement("p", "", "forecast"));
+  gridItem5.appendChild(createDOMElement("p", "", "Forecast"));
 
   //grid item6
   const gridItem6 = createDOMElement("div", "grid-item6");
