@@ -12,6 +12,7 @@ import { styleForecastBtns } from "./view/styleForecastButtons.js";
 import weatherData from "./weatherForecast/weatherData";
 import wetaherIcon from "./assets/weather-icon.svg";
 import magnify from "./assets/maginify-icon.svg";
+import { handleErrors } from "./controller/handleErrors.js";
 //cash DOM
 const searchBtn = document.getElementById("search-button");
 const searchInput = document.getElementById("search");
@@ -28,6 +29,7 @@ const hourlyForecastBtn = document.getElementById("hourly-forecast");
 const dailyForecastBtn = document.getElementById("daily-forecast");
 const reloadBtn = document.getElementById("reload-icon");
 const loadingCard = document.querySelector(".loading-card");
+const errorPage = document.getElementById("error-page");
 
 hourlyForecastBtn.dataset.selected = "true";
 dailyForecastBtn.dataset.selected = "false";
@@ -45,62 +47,65 @@ async function startingPage() {
   try {
     //by default display Athens weather on page load
     const response = await fetchData("Athens");
+    if (!response.error) {
+      //create an object with the data we want to display
+      const weather = weatherData(response);
 
-    //create an object with the data we want to display
-    const weather = weatherData(response);
-
-    //display the weather data
-    displayWeather(weather);
-    displayUnitData(weather, toggleButton.dataset.unit);
-
-    //by default we display hourly forecast
-    displayForecast(weather, toggleButton.dataset.unit);
-    styleForecastBtns();
-
-    setUnit(toggleButton.dataset.unit);
-    loadingCard.style.display = "none";
-
-    //handle hourly forecast
-    hourlyForecastBtn.addEventListener("click", () => {
-      displayForecast(weather, toggleButton.dataset.unit);
-      hourlyForecastBtn.dataset.selected = "true";
-      dailyForecastBtn.dataset.selected = "false";
-      styleForecastBtns();
-
-      //remove the event listener
-      hourlyForecastBtn.removeEventListener(
-        "click",
-        displayForecast(weather, toggleButton.dataset.unit)
-      );
-    });
-
-    //handle daily forecast
-    dailyForecastBtn.addEventListener("click", () => {
-      displayForecast(weather, toggleButton.dataset.unit);
-      dailyForecastBtn.dataset.selected = "true";
-      hourlyForecastBtn.dataset.selected = "false";
-      styleForecastBtns();
-
-      //remove the event listener
-      dailyForecastBtn.removeEventListener(
-        "click",
-        displayForecast(weather, toggleButton.dataset.unit)
-      );
-    });
-
-    //Update the weather
-    reloadBtn.addEventListener("click", startingPage);
-
-    //Change Units
-    events.on("changeUnit", () => {
-      setUnit(toggleButton.dataset.unit);
+      //display the weather data
+      displayWeather(weather);
       displayUnitData(weather, toggleButton.dataset.unit);
+
+      //by default we display hourly forecast
       displayForecast(weather, toggleButton.dataset.unit);
-    });
-  } catch {
-    (err) => {
-      console.log(err);
-    };
+      styleForecastBtns();
+
+      setUnit(toggleButton.dataset.unit);
+      loadingCard.style.display = "none";
+
+      //handle hourly forecast
+      hourlyForecastBtn.addEventListener("click", () => {
+        displayForecast(weather, toggleButton.dataset.unit);
+        hourlyForecastBtn.dataset.selected = "true";
+        dailyForecastBtn.dataset.selected = "false";
+        styleForecastBtns();
+
+        //remove the event listener
+        hourlyForecastBtn.removeEventListener(
+          "click",
+          displayForecast(weather, toggleButton.dataset.unit)
+        );
+      });
+
+      //handle daily forecast
+      dailyForecastBtn.addEventListener("click", () => {
+        displayForecast(weather, toggleButton.dataset.unit);
+        dailyForecastBtn.dataset.selected = "true";
+        hourlyForecastBtn.dataset.selected = "false";
+        styleForecastBtns();
+
+        //remove the event listener
+        dailyForecastBtn.removeEventListener(
+          "click",
+          displayForecast(weather, toggleButton.dataset.unit)
+        );
+      });
+
+      //Update the weather
+      reloadBtn.addEventListener("click", startingPage);
+
+      //Change Units
+      events.on("changeUnit", () => {
+        setUnit(toggleButton.dataset.unit);
+        displayUnitData(weather, toggleButton.dataset.unit);
+        displayForecast(weather, toggleButton.dataset.unit);
+      });
+    } else {
+      handleErrors(response.error);
+      loadingCard.style.display = "none";
+    }
+  } catch (error) {
+    console.error(error);
+    errorPage.style.display = "flex";
   }
 }
 
@@ -108,33 +113,44 @@ async function startingPage() {
 async function handleSearch(e) {
   e.preventDefault();
   loadingCard.style.display = "flex";
-  //fetch the weather data
-  const response = await fetchData(searchInput.value);
 
-  //create an object with the data we want to display
-  const weather = weatherData(response);
-  displayWeather(weather);
-  displayUnitData(weather, toggleButton.dataset.unit);
+  try {
+    //fetch the weather data
+    const response = await fetchData(searchInput.value);
+    if (!response.error) {
+      //create an object with the data we want to display
+      const weather = weatherData(response);
 
-  //by default we display hourly forecast
-  hourlyForecastBtn.dataset.selected = "true";
-  dailyForecastBtn.dataset.selected = "false";
-  displayForecast(weather, toggleButton.dataset.unit);
+      displayWeather(weather);
+      displayUnitData(weather, toggleButton.dataset.unit);
 
-  setUnit(toggleButton.dataset.unit);
-  loadingCard.style.display = "none";
-  //Change Units
-  events.on("changeUnit", () => {
-    setUnit(toggleButton.dataset.unit);
-    displayUnitData(weather, toggleButton.dataset.unit);
-    displayForecast(weather, toggleButton.dataset.unit);
-  });
+      //by default we display hourly forecast
+      hourlyForecastBtn.dataset.selected = "true";
+      dailyForecastBtn.dataset.selected = "false";
+      displayForecast(weather, toggleButton.dataset.unit);
 
-  //Display Forecast
-  events.on(
-    "changeForecast",
-    displayForecast(weather, toggleButton.dataset.unit)
-  );
-  reloadBtn.removeEventListener("click", startingPage);
-  reloadBtn.addEventListener("click", handleSearch);
+      setUnit(toggleButton.dataset.unit);
+      loadingCard.style.display = "none";
+      //Change Units
+      events.on("changeUnit", () => {
+        setUnit(toggleButton.dataset.unit);
+        displayUnitData(weather, toggleButton.dataset.unit);
+        displayForecast(weather, toggleButton.dataset.unit);
+      });
+
+      //Display Forecast
+      events.on(
+        "changeForecast",
+        displayForecast(weather, toggleButton.dataset.unit)
+      );
+      reloadBtn.removeEventListener("click", startingPage);
+      reloadBtn.addEventListener("click", handleSearch);
+    } else {
+      handleErrors(response.error);
+      loadingCard.style.display = "none";
+    }
+  } catch (error) {
+    console.error(error);
+    errorPage.style.display = "flex";
+  }
 }
