@@ -8,7 +8,6 @@ export const displayForecast = function (weather, unit) {
   const rainElements = document.querySelectorAll("#forecast-chance-of-rain");
   const windElements = document.querySelectorAll("#forecast-wind");
   const hourlyForecastBtn = document.getElementById("hourly-forecast");
-  const dailyForecastBtn = document.getElementById("daily-forecast");
 
   let key;
   hourlyForecastBtn.dataset.selected === "true"

@@ -10,8 +10,6 @@ import { displayForecast } from "./controller/displayForecast";
 import { setUnit } from "./controller/setUnit";
 import { styleForecastBtns } from "./view/styleForecastButtons.js";
 import weatherData from "./weatherForecast/weatherData";
-import wetaherIcon from "./assets/weather-icon.svg";
-import magnify from "./assets/maginify-icon.svg";
 import { handleErrors } from "./controller/handleErrors.js";
 //cash DOM
 const searchBtn = document.getElementById("search-button");
@@ -100,18 +98,20 @@ async function startingPage() {
         displayForecast(weather, toggleButton.dataset.unit);
       });
     } else {
-      handleErrors(response.error);
       loadingCard.style.display = "none";
+      throw response.error;
     }
   } catch (error) {
-    console.error(error);
-    errorPage.style.display = "flex";
+    handleErrors(error);
   }
 }
 
 //handle forecast on search
 async function handleSearch(e) {
   e.preventDefault();
+  if (errorPage.style.display === "flex") {
+    errorPage.style.display = "none";
+  }
   loadingCard.style.display = "flex";
 
   try {
@@ -146,11 +146,10 @@ async function handleSearch(e) {
       reloadBtn.removeEventListener("click", startingPage);
       reloadBtn.addEventListener("click", handleSearch);
     } else {
-      handleErrors(response.error);
       loadingCard.style.display = "none";
+      throw response.error;
     }
   } catch (error) {
-    console.error(error);
-    errorPage.style.display = "flex";
+    handleErrors(error);
   }
 }
