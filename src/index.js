@@ -45,6 +45,7 @@ async function startingPage() {
   try {
     //by default display Athens weather on page load
     const response = await fetchData("Athens");
+    console.log(response);
     if (!response.error) {
       //create an object with the data we want to display
       const weather = weatherData(response);

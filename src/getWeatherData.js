@@ -5,7 +5,7 @@ export const fetchData = async function fetchData(location) {
 
   try {
     let response = await fetch(
-      `https://api.weatherapi.com/v1/forecast.json?key=cf1f0970fc5e4eddb25132935242905&q=${location}&days=5`,
+      `https://api.weatherapi.com/v1/forecast.json?key=1c13c1d8077641edabd195225241006&q=${location}&days=5`,
       { mode: "cors" }
     );
     //handle different type of errors
